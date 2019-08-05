@@ -13,8 +13,8 @@ RUN addgroup -S wegajetty \
 ARG VERSION
 ARG MAX_MEMORY
 
-ENV VERSION ${VERSION:-4.7.0}
-ENV EXIST_URL https://dl.bintray.com/existdb/releases/eXist-db-setup-${VERSION}.jar
+ENV VERSION ${VERSION:-5.0.0-RC8}
+ENV EXIST_URL https://dl.bintray.com/existdb/releases/exist-installer-${VERSION}.jar
 ENV EXIST_HOME /opt/exist
 ENV MAX_MEMORY ${MAX_MEMORY:-2048}
 ENV EXIST_ENV ${EXIST_ENV:-development}
