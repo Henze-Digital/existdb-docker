@@ -97,7 +97,8 @@ then
 # finally fallback to generating a random password
 else
     # generate a random password and output it to the logs
-    SECRET=`pwgen 24 -csn`
+    #SECRET=`pwgen 24 -csn`
+    SECRET=``
     echo "********************************"
     echo "no admin password provided"
     echo "setting password to ${SECRET}"
