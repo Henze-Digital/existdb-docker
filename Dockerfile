@@ -1,14 +1,15 @@
 # Dockerfile for running the WeGA-WebApp (https://github.com/Edirom/WeGA-WebApp) 
 #
-# adjusted from https://github.com/jurrian/existdb-alpine
+# root source from https://github.com/jurrian/existdb-alpine
+# adjusted from https://github.com/peterstadler/existdb-docker
 
 FROM openjdk:8-jre-alpine
-MAINTAINER Peter Stadler
-LABEL org.opencontainers.image.source=https://github.com/peterstadler/existdb-docker
+MAINTAINER Dennis Ried
+LABEL org.opencontainers.image.source=https://github.com/Henze-Digital/existdb-docker
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-RUN addgroup -S wegajetty \
-    && adduser -D -S -H -G wegajetty wegajetty \
+RUN addgroup -S hwhjetty \
+    && adduser -D -S -H -G hwhjetty hwhjetty \
     && rm -rf /etc/group- /etc/passwd- /etc/shadow-
 
 ARG VERSION
@@ -58,14 +59,14 @@ COPY entrypoint.sh ${EXIST_HOME}/
 COPY adjust-conf-files.xsl ${EXIST_HOME}/
 COPY log4j2.xml ${EXIST_HOME}/ 
 
-# set permissions for the wegajetty user
+# set permissions for the hwhjetty user
 RUN rm -Rf ${EXIST_DATA_DIR}/* \
-    && chown -R wegajetty:wegajetty ${EXIST_HOME} \
+    && chown -R hwhjetty:hwhjetty ${EXIST_HOME} \
     && chmod 755 ${EXIST_HOME}/entrypoint.sh
 
 # switching to user wegajetty for further copying 
 # and running exist-db 
-USER wegajetty:wegajetty
+USER hwhjetty:hwhjetty
 
 VOLUME ["${EXIST_DATA_DIR}"]
 
