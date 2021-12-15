@@ -6,10 +6,6 @@
 FROM openjdk:8-jre-slim
 MAINTAINER Dennis Ried
 LABEL org.opencontainers.image.source=https://github.com/Henze-Digital/existdb-docker
-# add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-RUN addgroup -S hwhjetty \
-    && adduser -D -S -H -G hwhjetty hwhjetty \
-    && rm -rf /etc/group- /etc/passwd- /etc/shadow-
 
 ARG VERSION
 ARG MAX_MEMORY
