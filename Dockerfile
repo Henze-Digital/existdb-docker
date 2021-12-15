@@ -2,9 +2,10 @@
 #
 # initially based on https://github.com/jurrian/existdb-alpine
 # adjusted from https://github.com/peterstadler/existdb-docker
+# by Dennis Ried for Henze-Digital (https://github.com/Henze-Digital)
 
 FROM openjdk:8-jre-slim
-MAINTAINER Dennis Ried
+MAINTAINER Peter Stadler, Dennis Ried
 LABEL org.opencontainers.image.source=https://github.com/Henze-Digital/existdb-docker
 
 ARG VERSION
