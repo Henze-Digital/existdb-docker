@@ -65,7 +65,7 @@ RUN apt-get update \
 
 # switching to user wegajetty for further copying 
 # and running exist-db 
-USER hwhjetty:hwhjetty
+USER wegajetty:wegajetty
 
 VOLUME ["${EXIST_DATA_DIR}"]
 
