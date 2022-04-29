@@ -1,0 +1,18 @@
+version: "3.6"
+services:
+  existdb:
+    image: stadlerpeter/existdb:latest
+    ports: 
+      - 8080:8080
+    environment: 
+      - EXIST_PASSWORD_FILE=/run/secrets/existdb_passwd
+    restart: unless-stopped
+    secrets:
+      - source: existdb_passwd
+    volumes:
+      - existdb_data:/opt/exist/data
+secrets:
+  existdb_passwd:
+    file: ../hwh-data-internal-only/existdb-docker/pswd-local.txt
+volumes:
+  existdb_data:
