@@ -11,7 +11,7 @@ ARG MAX_MEMORY
 ARG EXIST_URL
 ARG SAXON_JAR
 
-ENV VERSION ${VERSION:-6.0.1}
+ENV VERSION ${VERSION:-6.1.0}
 ENV EXIST_URL ${EXIST_URL:-https://github.com/eXist-db/exist/releases/download/eXist-${VERSION}/exist-installer-${VERSION}.jar}
 ENV EXIST_HOME /opt/exist
 ENV MAX_MEMORY ${MAX_MEMORY:-2048}
@@ -44,7 +44,7 @@ RUN apt-get update \
     && echo "MAX_MEMORY=${MAX_MEMORY}" >> "/tmp/options.txt" \
     && echo "dataDir=${EXIST_DATA_DIR}" >> "/tmp/options.txt" \
     # install eXist-db
-    # ending with true because java somehow returns with a non-zero after succesfull installing
+    # ending with true because java somehow returns with a non-zero after successfull installing
     && curl -sL ${EXIST_URL} -o /tmp/exist.jar \
     && java -jar "/tmp/exist.jar" -options "/tmp/options.txt" || true \ 
     && rm -fr "/tmp/exist.jar" "/tmp/options.txt" ${EXIST_DATA_DIR}/* \
